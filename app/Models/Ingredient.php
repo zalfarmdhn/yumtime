@@ -16,7 +16,8 @@ class Ingredient extends Model
         'photo'
     ];
 
-    public function recipeIngredient(): HasMany{
+    public function recipeIngredient(): HasMany
+    {
         return $this->HasMany(RecipeIngredient::class, 'ingredient_id');
     }
 }

@@ -24,6 +24,14 @@ class RecipeAuthorResource extends Resource
         return $form
             ->schema([
                 //
+                Forms\Components\TextInput::make('name')
+                ->helperText('Gunakan nama data dengan tepat.')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\FileUpload::make('photo')
+                ->image()
+                ->required(),
             ]);
     }
 
@@ -32,6 +40,11 @@ class RecipeAuthorResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+
+                Tables\Columns\ImageColumn::make('photo')
+                ->circular(),
             ])
             ->filters([
                 //
