@@ -14,7 +14,7 @@ class SearchController extends Controller
     {
         $query = $request->input('query');
 
-        $recipes = Recipe::where('name', 'LIKE', "%$query%")->get();
+        $recipes = Recipe::with('author')->where('name', 'LIKE', "%$query%")->get();
 
         return RecipesResource::collection($recipes);
     }
